@@ -9,7 +9,7 @@ async function bootstrap() {
       exceptionFactory(validationErrors) {
         const errors = validationErrors.map((error) => ({
           field: error.property,
-          errors: Object.values(error.constraints),
+          errors: Object.values(error.constraints || {}),
         }));
         return new BadRequestException({
           statusCode: 400,
